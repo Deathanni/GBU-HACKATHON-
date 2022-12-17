@@ -17,10 +17,13 @@ func CheckError(err error) {
 	}
 }
 
+// WARNING: THE PASSWORD IS STORED IN PLAIN-TEXT IN THE DATABASE WHICH IS HIGHLY INSECURE
+// MUST BE CHANGED BEFORE THE BACKEND GETS RELEASED TO THE PUBLIC
 func AddDataToDatabase(student_data students_database) {
-	insertdata := `insert into "students_data"("roll_no", "name", "hostel_code") values($1, $2, $3)`
-    _, err := db.Exec(insertdata, student_data.Roll_No, student_data.Name, student_data.Hostel_Code)
+	insertdata := `insert into "students_data"("roll_no", "name", "hostel_code", "password") values($1, $2, $3, $4)`
+    _, err := db.Exec(insertdata, student_data.Roll_No, student_data.Name, student_data.Hostel_Code, student_data.Password)
     CheckError(err)
+    Students_Data = append(Students_Data, student_data)
 }
 
 func AddComplaintToDatabase(complaint_data students_complaint) {

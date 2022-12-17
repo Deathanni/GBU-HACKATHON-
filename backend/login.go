@@ -163,3 +163,13 @@ func AdminLogoutFunc(c *gin.Context) {
         c.AbortWithStatus(http.StatusUnauthorized)
     }
 }
+
+func SigninUser(c *gin.Context) {
+	var student_data students_database
+
+	if c.BindJSON(&student_data) != nil {
+        return
+    }
+    
+    AddDataToDatabase(student_data)
+}

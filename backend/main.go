@@ -18,29 +18,20 @@ type students_complaint struct {
 type admin_database struct {
 	Username string `json:"username"`
 	Name string `json:"name"`
+	Password string `json:"password"`
 	Hostel_Code string `json:"hostel_code"`
 }
 
 type students_database struct {
     Roll_No string  `json:"roll_no"`
     Name  string  `json:"name"`
+    Password string `json:"password"`
     Hostel_Code string  `json:"hostel_code"`
 }
 
 var Students_Data []students_database
 var Admin_Data []admin_database
 var Complaint_Data []students_complaint
-
-func AddUsers(c *gin.Context) {
-	var student_data students_database
-
-	if c.BindJSON(&student_data) != nil {
-        return
-    }
-    
-    AddDataToDatabase(student_data)
-    Students_Data = append(Students_Data, student_data)
-}
 
 func GatherAdminData(c *gin.Context) {
 	username := c.Param("username")
@@ -65,10 +56,14 @@ func NewComplaint(c *gin.Context) {
 }
 
 func GatherHostelStudentsData(c *gin.Context) {
-	hostel_code := c.Param("hostel_code")
+	var complaint_data students_complaint
+
+	if c.BindJSON(&complaint_data) != nil {
+        return
+    }
 
 	for _, a := range Students_Data {
-        if a.Hostel_Code == hostel_code {
+        if a.Hostel_Code == complaint_data.Hostel_Code {
             c.IndentedJSON(http.StatusOK, a)
             break
         }
@@ -76,10 +71,14 @@ func GatherHostelStudentsData(c *gin.Context) {
 }
 
 func GatherStudentsComplaints(c *gin.Context) {
-	hostel_code := c.Param("hostel_code")
+	var complaint_data students_complaint
+
+	if c.BindJSON(&complaint_data) != nil {
+        return
+    }
 
 	for _, a := range Complaint_Data {
-        if a.Hostel_Code == hostel_code {
+        if a.Hostel_Code == complaint_data.Hostel_Code {
             c.IndentedJSON(http.StatusOK, a)
         }
 	}
@@ -97,10 +96,14 @@ func GatherUserData(c *gin.Context) {
 }
 
 func GatherUserComplaints(c *gin.Context) {
-	roll_no := c.Param("roll_no")
+	var complaint_data students_complaint
+
+	if c.BindJSON(&complaint_data) != nil {
+        return
+    }
 
 	for _, a := range Complaint_Data {
-        if a.Roll_No == roll_no {
+        if a.Roll_No == complaint_data.Roll_No {
             c.IndentedJSON(http.StatusOK, a)
         }
 	}
@@ -108,13 +111,16 @@ func GatherUserComplaints(c *gin.Context) {
 
 func ResolveUserComplaint(c *gin.Context) {
 	uid := c.Param("uid")
-	roll_no := c.Param("roll_no")
-	query_resolve := c.Param("query_resolve")
+	var complaint_data students_complaint
 
-    for _, a := range Complaint_Data {
-        if a.Roll_No == roll_no && a.Uid == uid{
-            a.Query_Resolved = query_resolve
-            UserComplaintResolve(query_resolve, uid)
+	if c.BindJSON(&complaint_data) != nil {
+        return
+    }
+
+    for i, a := range Complaint_Data {
+        if a.Roll_No == complaint_data.Roll_No && a.Uid == uid{
+            Complaint_Data[i].Query_Resolved = complaint_data.Query_Resolved
+            UserComplaintResolve(complaint_data.Query_Resolved, uid)
             return
         }
 	}
@@ -139,6 +145,7 @@ func engine() *gin.Engine {
 	r.POST("/admin/login", AdminLoginFunc)
 	r.POST("/logout", LogoutFunc)
 	r.POST("/admin/logout", AdminLogoutFunc)
+	r.POST("/signin", SigninUser)
 
 	// Private group, require authentication to access
 	private := r.Group("/private")
@@ -153,7 +160,7 @@ func engine() *gin.Engine {
 	admin := r.Group("/admin")
 	admin.Use(AdminAuthRequired)
 	{
-		private.POST("/admin/:username", GatherAdminData)
+		admin.POST("/admin/:username", GatherAdminData)
 		admin.POST("/users", GatherHostelStudentsData)
 		admin.POST("/complaints", GatherStudentsComplaints)
 		admin.POST("/complaint/:uid/resolve", ResolveUserComplaint)
