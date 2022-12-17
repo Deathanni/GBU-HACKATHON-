@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomePage"
+    android:background="@drawable/home_template">
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/logo"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <ImageButton
+        android:id="@+id/btnOpen"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/menuopen"
+        />
+    <ImageView
+        android:id="@+id/chhatrahLogo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/chhatrah"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        />
+    <ImageView
+        android:id="@+id/gbuLogo"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:src="@drawable/gbu_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/chhatrahLogo"
+        />
+    <Button
+        android:id="@+id/btnStudent"
+        android:layout_centerHorizontal="true"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gbuLogo"
+        android:layout_marginTop="30dp"
+        android:text="Student"
+        android:background="@drawable/btnsecondary"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        />
+    <Button
+        android:id="@+id/btnWarden"
+        android:layout_centerHorizontal="true"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStudent"
+        android:layout_marginTop="30dp"
+        android:text="Warden"
+        android:background="@drawable/btnprimary"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        />
+
+</RelativeLayout>
