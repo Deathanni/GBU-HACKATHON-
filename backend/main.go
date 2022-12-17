@@ -56,14 +56,10 @@ func NewComplaint(c *gin.Context) {
 }
 
 func GatherHostelStudentsData(c *gin.Context) {
-	var complaint_data students_complaint
-
-	if c.BindJSON(&complaint_data) != nil {
-        return
-    }
+	hostel_code := c.Param("hostel_code")
 
 	for _, a := range Students_Data {
-        if a.Hostel_Code == complaint_data.Hostel_Code {
+        if a.Hostel_Code == hostel_code {
             c.IndentedJSON(http.StatusOK, a)
             break
         }
@@ -71,14 +67,10 @@ func GatherHostelStudentsData(c *gin.Context) {
 }
 
 func GatherStudentsComplaints(c *gin.Context) {
-	var complaint_data students_complaint
-
-	if c.BindJSON(&complaint_data) != nil {
-        return
-    }
+    hostel_code := c.Param("hostel_code")
 
 	for _, a := range Complaint_Data {
-        if a.Hostel_Code == complaint_data.Hostel_Code {
+        if a.Hostel_Code == hostel_code {
             c.IndentedJSON(http.StatusOK, a)
         }
 	}
@@ -96,14 +88,10 @@ func GatherUserData(c *gin.Context) {
 }
 
 func GatherUserComplaints(c *gin.Context) {
-	var complaint_data students_complaint
-
-	if c.BindJSON(&complaint_data) != nil {
-        return
-    }
+	roll_no := c.Param("roll_no")
 
 	for _, a := range Complaint_Data {
-        if a.Roll_No == complaint_data.Roll_No {
+        if a.Roll_No == roll_no {
             c.IndentedJSON(http.StatusOK, a)
         }
 	}
@@ -153,7 +141,7 @@ func engine() *gin.Engine {
 	{
 		private.POST("/user/:roll_no", GatherUserData)
 		private.POST("/complaint", NewComplaint)
-		private.POST("/complaints", GatherUserComplaints)
+		private.POST("/complaints:roll_no", GatherUserComplaints)
 		private.POST("/complaint/:uid/resolve", ResolveUserComplaint)
 	}
 
@@ -161,8 +149,8 @@ func engine() *gin.Engine {
 	admin.Use(AdminAuthRequired)
 	{
 		admin.POST("/admin/:username", GatherAdminData)
-		admin.POST("/users", GatherHostelStudentsData)
-		admin.POST("/complaints", GatherStudentsComplaints)
+		admin.POST("/users:hostel_code", GatherHostelStudentsData)
+		admin.POST("/complaints:hostel_code", GatherStudentsComplaints)
 		admin.POST("/complaint/:uid/resolve", ResolveUserComplaint)
 	}
 	return r
