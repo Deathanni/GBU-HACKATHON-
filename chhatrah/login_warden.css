@@ -1,0 +1,96 @@
+.body
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: blue;
+}
+div{
+    margin: 0;
+}
+.hero
+{
+    display: flex;
+    flex-direction: row;
+    background-color: #f4f4f3;
+}
+.box_1
+{
+    background: rgba(0, 0, 0, .7)url(assets/jj.jpg);
+    background-blend-mode: darken;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    height: 100vh;
+    border: solid black 1px;
+    color: white;
+    
+}
+input[type=text] {
+    width: 100%;
+    padding: 10px 16px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+  input[type=password] {
+    width: 100%;
+    padding: 10px 16px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  select {
+    width: 100%;
+    padding: 10px 16px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: solid black 1px;
+    border-radius: 4px;
+    background-color: white;
+  }
+p.font
+{
+    font-size: 40px;
+    margin-top: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+div.para
+{
+    display: flex;
+    width: 300px;
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.box_2
+{
+    width: 70rem;
+    padding: 15px;
+}
+.box_2img
+{
+    text-align: center;
+}
+.box_2 p
+{
+    padding-left: 10px;
+}
+button
+{
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    background-color: blue;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+}
+button a{
+    text-decoration: none;
+    color: #fff;
+}
+.but
+{
+    text-align: center;
+}
