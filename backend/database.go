@@ -119,7 +119,7 @@ func UserComplaintResolve(query_resolve string, uid string) {
 
 func OpenDatabase() {
 	var err error
-	psqlconn := fmt.Sprintf("host=localhost port=5432 user=postgres password=12345 dbname=students_database sslmode=disable")
+	psqlconn := fmt.Sprintf("host=localhost port=5432 user=postgres password=<provide_password> dbname=main_data sslmode=disable")
 	db, err = sql.Open("postgres", psqlconn)
 	if (err != nil) {
 		CheckError(err)

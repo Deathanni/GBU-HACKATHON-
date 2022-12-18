@@ -34,10 +34,14 @@ var Admin_Data []admin_database
 var Complaint_Data []students_complaint
 
 func GatherAdminData(c *gin.Context) {
-	username := c.Param("username")
+	var admin_data admin_database
+
+	if c.BindJSON(&admin_data) != nil {
+        return
+    }
 
     for _, a := range Admin_Data {
-        if a.Username == username {
+        if a.Username == admin_data.Username {
             c.IndentedJSON(http.StatusOK, a)
             return
         }
@@ -77,10 +81,14 @@ func GatherStudentsComplaints(c *gin.Context) {
 }
 
 func GatherUserData(c *gin.Context) {
-	roll_no := c.Param("roll_no")
+	var student_data students_database
+
+	if c.BindJSON(&student_data) != nil {
+        return
+    }
 
     for _, a := range Students_Data {
-        if a.Roll_No == roll_no {
+        if a.Roll_No == student_data.Roll_No {
             c.IndentedJSON(http.StatusOK, a)
             return
         }
@@ -88,10 +96,14 @@ func GatherUserData(c *gin.Context) {
 }
 
 func GatherUserComplaints(c *gin.Context) {
-	roll_no := c.Param("roll_no")
+	var student_data students_database
+
+	if c.BindJSON(&student_data) != nil {
+        return
+    }
 
 	for _, a := range Complaint_Data {
-        if a.Roll_No == roll_no {
+        if a.Roll_No == student_data.Roll_No {
             c.IndentedJSON(http.StatusOK, a)
         }
 	}
@@ -139,18 +151,18 @@ func engine() *gin.Engine {
 	private := r.Group("/private")
 	private.Use(AuthRequired)
 	{
-		private.POST("/user/:roll_no", GatherUserData)
+		private.POST("/user", GatherUserData)
 		private.POST("/complaint", NewComplaint)
-		private.POST("/complaints:roll_no", GatherUserComplaints)
+		private.POST("/complaints", GatherUserComplaints)
 		private.POST("/complaint/:uid/resolve", ResolveUserComplaint)
 	}
 
 	admin := r.Group("/admin")
 	admin.Use(AdminAuthRequired)
 	{
-		admin.POST("/admin/:username", GatherAdminData)
-		admin.POST("/users:hostel_code", GatherHostelStudentsData)
-		admin.POST("/complaints:hostel_code", GatherStudentsComplaints)
+		admin.POST("/admin_user", GatherAdminData)
+		admin.POST("/users/:hostel_code", GatherHostelStudentsData)
+		admin.POST("/complaints/:hostel_code", GatherStudentsComplaints)
 		admin.POST("/complaint/:uid/resolve", ResolveUserComplaint)
 	}
 	return r
