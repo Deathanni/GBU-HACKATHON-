@@ -17,7 +17,7 @@ For authentication, the client must provide json data as: `{"roll_no":<value>, "
 - `/private/user`: Used to gather information of the logged in user. Returns data as `{"roll_no":<value>, "name":<value>, "hostel_code":<value>,}`.
 - `/private/user/complaint`: Used to send your complaint to the server. Returns `StatusOK` when successful. Provide json data as `{"roll_no":<value>, "complaint_text":<value>, "complaint_text_title":<value>, "hostel_code":<value>}`.
 - `/private/complaints`: Used to gather all of complaints submitted by the logged in user. Returns json data as `{"roll_no":<value>, "complaint_text":<value>, "complaint_text_title":<value>, "hostel_code":<value>}`.
-- `/private/complaint/:uid/resolve`: Used to resolve a specific complaint query identified with its unique id. Returns `StatusOK` when successful. Provide uid as `/admin/complaint/<value>/resolve`
+- `/private/complaint/:uid/resolve`: Used to resolve a specific complaint query identified with its unique id. Returns `StatusOK` when successful. Provide uid as `/private/complaint/<value>/resolve`
 
 ### For admin users:
 For authentication, the client must provide json data as: `{"username":<value>, "token"=<value>}` while accessesing these:
