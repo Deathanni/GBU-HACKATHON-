@@ -25,13 +25,14 @@ func AddDataToDatabase(student_data students_database) bool {
     return true
 }
 
-func AddComplaintToDatabase(complaint_data students_complaint) bool {
+func AddComplaintToDatabase(complaint_data *students_complaint) bool {
 	// Randomly generate the unique id of the complaint
 	rand.Seed(time.Now().UnixNano())
 	complaint_data.Uid = strconv.Itoa(rand.Intn(10000000 - 1 + 1) + 1)
+	complaint_data.Query_Resolved = "N"
 
-	insertdata := `insert into "complaint_data" values($1, $2, $3, $4)`
-    _, err := db.Exec(insertdata, complaint_data.Uid, complaint_data.Complaint_Text, complaint_data.Complaint_Text_Title, complaint_data.Roll_No, complaint.hostel_code)
+	insertdata := `insert into "complaint_data" ("uid", "complaint_text", "complaint_text_title", "roll_no", "hostel_code") values($1, $2, $3, $4, $5)`
+    _, err := db.Exec(insertdata, complaint_data.Uid, complaint_data.Complaint_Text, complaint_data.Complaint_Text_Title, complaint_data.Roll_No, complaint_data.Hostel_Code)
     if err != nil {
 		panic(err)
 		return false
@@ -138,7 +139,7 @@ func GatherDataFromDatabase() bool {
 	}
 	defer rows.Close()
 	for rows.Next() {
-		err = rows.Scan(&student_complaint_data.Uid, &student_complaint_data.Complaint_Text, &student_complaint_data.Complaint_Text_Title, &student_complaint_data.Roll_No)
+		err = rows.Scan(&student_complaint_data.Uid, &student_complaint_data.Complaint_Text, &student_complaint_data.Complaint_Text_Title, &student_complaint_data.Roll_No, &student_complaint_data.Hostel_Code, &student_complaint_data.Query_Resolved)
 		if err != nil {
 			panic(err)
 			return false

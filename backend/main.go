@@ -55,7 +55,7 @@ func NewComplaint(c *gin.Context) {
         return
     }
     
-    if AddComplaintToDatabase(complaint_data) {
+    if AddComplaintToDatabase(&complaint_data) {
 		Complaint_Data = append(Complaint_Data, complaint_data)
 		c.JSON(http.StatusOK, gin.H{"message": "Successful"})
 	} else {
