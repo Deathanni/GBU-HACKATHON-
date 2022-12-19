@@ -31,7 +31,7 @@ func AddComplaintToDatabase(complaint_data students_complaint) bool {
 	complaint_data.Uid = strconv.Itoa(rand.Intn(10000000 - 1 + 1) + 1)
 
 	insertdata := `insert into "complaint_data" values($1, $2, $3, $4)`
-    _, err := db.Exec(insertdata, complaint_data.Uid, complaint_data.Complaint_Text, complaint_data.Complaint_Text_Title, complaint_data.Roll_No, complaint_data.Hostel_Code)
+    _, err := db.Exec(insertdata, complaint_data.Uid, complaint_data.Complaint_Text, complaint_data.Complaint_Text_Title, complaint_data.Roll_No)
     if err != nil {
 		panic(err)
 		return false
