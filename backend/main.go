@@ -55,8 +55,12 @@ func NewComplaint(c *gin.Context) {
         return
     }
     
-    AddComplaintToDatabase(complaint_data)
-    Complaint_Data = append(Complaint_Data, complaint_data)
+    if AddComplaintToDatabase(complaint_data) {
+		Complaint_Data = append(Complaint_Data, complaint_data)
+		c.JSON(http.StatusOK, gin.H{"message": "Successful"})
+	} else {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "AddComplaintToDatabase() failed!"})
+	}
 }
 
 func GatherHostelStudentsData(c *gin.Context) {
@@ -120,15 +124,24 @@ func ResolveUserComplaint(c *gin.Context) {
     for i, a := range Complaint_Data {
         if a.Roll_No == complaint_data.Roll_No && a.Uid == uid{
             Complaint_Data[i].Query_Resolved = complaint_data.Query_Resolved
-            UserComplaintResolve(complaint_data.Query_Resolved, uid)
+            if UserComplaintResolve(complaint_data.Query_Resolved, uid) {
+				c.JSON(http.StatusOK, gin.H{"message": "Successful"})
+			} else {
+				c.JSON(http.StatusInternalServerError, gin.H{"error": "UserComplaintResolve() failed!"})
+			}
             return
         }
 	}
 }
 
 func main() {
-	OpenDatabase()
-	GatherDataFromDatabase()
+	if !OpenDatabase() {
+		log.Fatal("Unable to start: OpenDatabase()!")
+	}
+
+	if !GatherDataFromDatabase() {
+		log.Fatal("Unable to start: GatherDataFromDatabase!")
+	}
 
 	r := engine()
 	r.Use(gin.Logger())

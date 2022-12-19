@@ -4,6 +4,9 @@ package main
 // https://github.com/Depado/gin-auth-example/
 
 import (
+	"fmt"
+	"encoding/json"
+	"io/ioutil"
 	"math/rand"
 	"net/http"
 	"strings"
@@ -28,14 +31,15 @@ var users = make(map[string]string)
 
 // AdminAuthRequired is a simple middleware to check the session
 func AdminAuthRequired(c *gin.Context) {
-	var login_data admin_login_data
+	var login_data map[string]interface{}
+	body, _ := ioutil.ReadAll(c.Request.Body)
 
-	if c.BindJSON(&login_data) != nil {
-		c.AbortWithStatus(http.StatusUnauthorized)
-        return
-    }
+	json.Unmarshal(body, &login_data)
+	roll_no := fmt.Sprintf("%v", login_data["username"])
+	token := fmt.Sprintf("%v", login_data["token"])
+	c.Request.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 
-	if v, ok := users[login_data.Username]; ok && v != login_data.Token {
+	if v, ok := users[username]; len(v) == 0 || v != token {
         c.AbortWithStatus(http.StatusUnauthorized)
         return
 	}
@@ -45,13 +49,15 @@ func AdminAuthRequired(c *gin.Context) {
 
 // AuthRequired is a simple middleware to check the session
 func AuthRequired(c *gin.Context) {
-	var login_data student_login_data
+	var login_data map[string]interface{}
+	body, _ := ioutil.ReadAll(c.Request.Body)
 
-	if c.BindJSON(&login_data) != nil {
-        return
-    }
+	json.Unmarshal(body, &login_data)
+	roll_no := fmt.Sprintf("%v", login_data["roll_no"])
+	token := fmt.Sprintf("%v", login_data["token"])
+	c.Request.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 
-	if v, ok := users[login_data.Roll_No]; ok && v != login_data.Token {
+	if v, ok := users[roll_no]; len(v) == 0 || v != token {
         c.AbortWithStatus(http.StatusUnauthorized)
         return
 	}
@@ -171,5 +177,9 @@ func SigninUser(c *gin.Context) {
         return
     }
     
-    AddDataToDatabase(student_data)
+    if AddDataToDatabase(student_data) {
+		c.JSON(http.StatusOK, gin.H{"message": "Successful"})
+	} else {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "AddDataToDatabase() failed!"})
+	}
 }
