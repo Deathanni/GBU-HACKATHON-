@@ -45,13 +45,19 @@ func CheckUsernameAndPassword (username string, password string) bool {
 	var pass string
 	query := fmt.Sprintf("SELECT password from admin_data WHERE username='%s'", username)
 	rows, err := db.Query(query)
-	CheckError(err)
+	if err != nil {
+		panic(err)
+		return false
+	}
 	defer rows.Close()
 
 	// First check whether the roll no. exists in the database
 	rows.Next()
 	err = rows.Scan(&pass)
-	CheckError(err)
+	if err != nil {
+		panic(err)
+		return false
+	}
 	if pass == "" {
 		return false
 	} else if password != pass {
@@ -111,7 +117,10 @@ func GatherDataFromDatabase() bool {
 	}
 
 	rows, err = db.Query("SELECT roll_no, name, hostel_code from students_data")
-	CheckError(err)
+	if err != nil {
+		panic(err)
+		return false
+	}
 	defer rows.Close()
 	for rows.Next() {
 		err = rows.Scan(&students_data.Roll_No, &students_data.Name, &students_data.Hostel_Code)
@@ -139,7 +148,7 @@ func GatherDataFromDatabase() bool {
 	return true
 }
 
-func UserComplaintResolve(query_resolve string, uid string) {
+func UserComplaintResolve(query_resolve string, uid string) bool {
 	insertdata := `update "complaint_data" set "query_resolved" = $1 where uid = $2' `
     _, err := db.Exec(insertdata, query_resolve, uid)
     if err != nil {
@@ -149,9 +158,9 @@ func UserComplaintResolve(query_resolve string, uid string) {
 	return true
 }
 
-func OpenDatabase() {
+func OpenDatabase() bool {
 	var err error
-	psqlconn := fmt.Sprintf("host=localhost port=5432 user=postgres password=<provide_password> dbname=main_data sslmode=disable")
+	psqlconn := fmt.Sprintf("host=localhost port=5432 user=postgres password=12345 dbname=main_data sslmode=disable")
 	db, err = sql.Open("postgres", psqlconn)
 	if err != nil {
 		panic(err)

@@ -4,6 +4,7 @@ package main
 // https://github.com/Depado/gin-auth-example/
 
 import (
+	"bytes"
 	"fmt"
 	"encoding/json"
 	"io/ioutil"
@@ -35,11 +36,11 @@ func AdminAuthRequired(c *gin.Context) {
 	body, _ := ioutil.ReadAll(c.Request.Body)
 
 	json.Unmarshal(body, &login_data)
-	roll_no := fmt.Sprintf("%v", login_data["username"])
+	username := fmt.Sprintf("%v", login_data["username"])
 	token := fmt.Sprintf("%v", login_data["token"])
 	c.Request.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 
-	if v, ok := users[username]; len(v) == 0 || v != token {
+	if v := users[username]; len(v) == 0 || v != token {
         c.AbortWithStatus(http.StatusUnauthorized)
         return
 	}
@@ -57,7 +58,7 @@ func AuthRequired(c *gin.Context) {
 	token := fmt.Sprintf("%v", login_data["token"])
 	c.Request.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 
-	if v, ok := users[roll_no]; len(v) == 0 || v != token {
+	if v := users[roll_no]; len(v) == 0 || v != token {
         c.AbortWithStatus(http.StatusUnauthorized)
         return
 	}
