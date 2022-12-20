@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePage"
+    tools:context=".activities.HomePage"
     android:background="@drawable/home_template">
 
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/logo"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
@@ -18,18 +18,21 @@
 
     <ImageButton
         android:id="@+id/btnOpen"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
         android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:src="@drawable/menuopen"
+        android:src="@drawable/menu"
         />
     <ImageView
         android:id="@+id/chhatrahLogo"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:src="@drawable/chhatrah"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         />
@@ -41,12 +44,22 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/chhatrahLogo"
         />
+    <TextView
+        android:id="@+id/gbu_text"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Gautam Buddha University"
+        android:layout_below="@+id/gbuLogo"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-black"
+        android:layout_centerHorizontal="true"
+        />
     <Button
         android:id="@+id/btnStudent"
         android:layout_centerHorizontal="true"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gbuLogo"
+        android:layout_below="@+id/gbu_text"
         android:layout_marginTop="30dp"
         android:text="Student"
         android:background="@drawable/btnsecondary"

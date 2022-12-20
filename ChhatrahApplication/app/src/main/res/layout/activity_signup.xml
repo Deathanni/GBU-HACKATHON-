@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
+    tools:context=".activities.Login"
     android:background="@drawable/signup">
     <TextView
         android:id="@+id/stu_heading"
@@ -26,8 +26,8 @@
         android:paddingLeft="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/edt_background"
-        android:textColorHint="@color/white"
+        android:background="@drawable/input_btn"
+        android:textColorHint="@color/black"
         />
     <EditText
         android:id="@+id/edit_mname"
@@ -39,8 +39,8 @@
         android:paddingLeft="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/edt_background"
-        android:textColorHint="@color/white"
+        android:background="@drawable/input_btn"
+        android:textColorHint="@color/black"
         />
     <EditText
         android:id="@+id/edit_lname"
@@ -52,8 +52,8 @@
         android:paddingLeft="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/edt_background"
-        android:textColorHint="@color/white"
+        android:background="@drawable/input_btn"
+        android:textColorHint="@color/black"
         />
     <EditText
         android:id="@+id/edit_roll"
@@ -62,51 +62,66 @@
         android:layout_below="@+id/edit_lname"
         android:layout_marginTop="10dp"
         android:hint="Roll No *"
+        android:inputType="number"
         android:paddingLeft="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/edt_background"
-        android:textColorHint="@color/white"
+        android:background="@drawable/input_btn"
+        android:textColorHint="@color/black"
         />
-    <CalendarView
-        android:id="@+id/edit_dob"
+
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/hostel_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_roll"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Choose hostel"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinner1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/edit_roll"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="15dp"
+        android:layout_below="@+id/hostel_name"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/edt_background"
-        />
-    <ExpandableListView
-        android:id="@+id/edit_hostel"
+        android:layout_marginBottom="20dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:paddingLeft="15dp"
+        android:spinnerMode="dropdown" />
+    <EditText
+        android:id="@+id/edit_spass"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/edit_dob"
+        android:layout_below="@+id/spinner1"
         android:layout_marginTop="10dp"
+        android:hint="Password *"
+        android:inputType="textPassword"
         android:paddingLeft="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/edt_background"
-        />
-    <ImageView
-        android:id="@+id/edit_img"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/edit_hostel"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="15dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/edt_background"
+        android:background="@drawable/input_btn"
+        android:textColorHint="@color/black"
         />
     <Button
         android:id="@+id/signup_btn"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:text="Submit"
-        android:layout_below="@+id/edit_img"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:textSize="25sp"

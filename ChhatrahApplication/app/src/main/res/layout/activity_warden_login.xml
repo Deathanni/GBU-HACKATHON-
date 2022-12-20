@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
+    tools:context=".activities.Login"
     android:background="@drawable/wardenl">
 
     <TextView
@@ -29,6 +29,8 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/edt_background"
         android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:inputType="textPersonName"
         />
 
     <EditText
@@ -43,6 +45,8 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/edt_background"
         android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:inputType="textPassword"
         />
 
     <Button

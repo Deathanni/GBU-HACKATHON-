@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Profile"
+    android:background="@drawable/hero_template">
+
+    <LinearLayout
+        android:id="@+id/student_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="25dp"
+        android:padding="10dp"
+        android:background="@drawable/imgshape"
+        >
+
+
+        <ImageView
+            android:id="@+id/student_img"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/student"
+            android:layout_marginRight="40dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STUDENT DETAIL"
+            android:textSize="30sp"
+            android:textAlignment="textStart"
+            />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:id="@+id/queries_pending"
+        android:orientation="vertical"
+        android:layout_below="@+id/student_detail"
+        android:layout_margin="25dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Details"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/white"
+            android:layout_marginBottom="5dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/imgshape"
+            android:padding="20dp"
+            >
+            <TextView
+                android:id="@+id/student_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name:- Xyz Delta"
+                android:textSize="30sp"
+                android:fontFamily="sans-serif-black"
+                android:layout_marginBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/student_roll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Roll no :- 2022468330"
+                android:textSize="30sp"
+                android:fontFamily="sans-serif-black"
+                android:layout_marginBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/student_dob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DOB :- 02/0/2004"
+                android:textSize="30sp"
+                android:fontFamily="sans-serif-black"
+                android:layout_marginBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/student_hostel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hostel:- Sayera narsimha reddy"
+                android:textSize="30sp"
+                android:fontFamily="sans-serif-black"
+                android:layout_marginBottom="5dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        >
+        <ImageButton
+            android:id="@+id/setting"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/circularimg"
+            android:src="@drawable/logo1"
+            android:layout_marginRight="50dp"
+            />
+        <ImageButton
+            android:id="@+id/phome"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/circularimg"
+            android:src="@drawable/logo2"
+            android:layout_marginRight="50dp"
+            />
+        <ImageButton
+            android:id="@+id/info"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/circularimg"
+            android:src="@drawable/logo3"
+            android:padding="3dp"
+
+            />
+
+    </LinearLayout>
+</RelativeLayout>

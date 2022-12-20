@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AddingQuery"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textSize="30sp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/btnsecondary"
+        android:layout_margin="15dp"
+        android:id="@+id/title_txt"
+        />
+    <EditText
+        android:id="@+id/read_title"
+        android:layout_below="@+id/title_txt"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:hint="Enter the title for Query"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/edit_query"
+
+        />
+
+    <TextView
+        android:id="@+id/des_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/read_title"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Description"
+        android:textColor="@color/btnsecondary"
+        android:textSize="30sp" />
+    <EditText
+        android:id="@+id/read_des"
+        android:layout_below="@+id/des_txt"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:hint="Mention Your Name &amp; Room no \n Enter your Complaint  "
+        android:paddingTop="15dp"
+        android:gravity="top"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/edit_query"
+
+        />
+
+    <Button
+        android:id="@+id/submit_query"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/read_des"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btnprimary"
+        android:padding="15dp"
+        android:text="Submit"
+        android:textColor="@color/white" />
+</RelativeLayout>

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu"
-    android:background="@drawable/menu">
+    tools:context=".activities.Menu"
+    android:background="@drawable/menutemplate">
    <TextView
        android:id="@+id/text_menu"
        android:layout_width="wrap_content"

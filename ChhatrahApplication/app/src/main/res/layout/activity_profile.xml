@@ -4,9 +4,185 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile"
+    tools:context=".activities.Profile"
     android:background="@drawable/hero_template">
 
+    <LinearLayout
+        android:id="@+id/student_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/imgshape"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
+
+        <ImageView
+            android:id="@+id/student_img"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginRight="40dp"
+            android:src="@drawable/student" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/student_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Name:- Xyz Delta"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/student_roll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Roll no :- 2022468330"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/student_dob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="DOB :- 02/0/2004"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/student_hostel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Hostel:- Sayera narsimha reddy"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/queries_pending"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_below="@+id/student_detail"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Queries pending"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/imgshape">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/edt_background"
+                android:orientation="vertical"
+                android:layout_above="@+id/add_query"
+                android:padding="15dp"
+                >
+                <TextView
+                    android:id="@+id/query_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title :"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/btnprimary"
+                    android:layout_marginBottom="15dp"
+                    />
+                <TextView
+                    android:id="@+id/query_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description :"
+                    android:textSize="20sp"
+                    android:textColor="@color/btnprimary"
+                    android:fontFamily="sans-serif-black"
+                    />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/add_query"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btnprimary"
+                android:fontFamily="sans-serif-black"
+                android:text="Add Query"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        >
+        <ImageButton
+            android:id="@+id/logout"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/circularimg"
+            android:src="@drawable/ic_baseline_logout_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+        <ImageButton
+            android:id="@+id/setting"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/circularimg"
+            android:src="@drawable/logo1"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/phome"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/circularimg"
+            android:src="@drawable/logo2"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/info"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/circularimg"
+            android:padding="3dp"
+            android:src="@drawable/logo3"
+
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
 
 </RelativeLayout>
