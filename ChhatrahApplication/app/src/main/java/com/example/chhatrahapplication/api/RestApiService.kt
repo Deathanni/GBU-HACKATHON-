@@ -51,7 +51,33 @@ class RestApiService {
             }
         )
     }
-
-
+    fun addQueries(query: AddQuery, onResult: (AddQuery?) -> Unit){
+        val retrofit = RetrofitClient.buildService(Api::class.java)
+        retrofit.addQuery(query).enqueue(
+            object : Callback<AddQuery> {
+                override fun onFailure(call: Call<AddQuery>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<AddQuery>, response: Response<AddQuery>) {
+                    val addedUser = response.body()
+                    onResult(addedUser)
+                }
+            }
+        )
+    }
+    fun seeQuery(query: QueriesOnList, onResult: (QueriesOnList?) -> Unit){
+        val retrofit = RetrofitClient.buildService(Api::class.java)
+        retrofit.seeQuery(query).enqueue(
+            object : Callback<QueriesOnList> {
+                override fun onFailure(call: Call<QueriesOnList>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<QueriesOnList>, response: Response<QueriesOnList>) {
+                    val addedUser = response.body()
+                    onResult(addedUser)
+                }
+            }
+        )
+    }
 
 }

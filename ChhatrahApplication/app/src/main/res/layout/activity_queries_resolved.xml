@@ -34,7 +34,7 @@
                 android:id="@+id/student_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name:- Xyz Delta"
+                android:text="Name:- stu 2 test"
                 android:textSize="15sp"
                 android:fontFamily="sans-serif-black"
                 android:layout_marginBottom="5dp"
@@ -49,19 +49,10 @@
                 android:layout_marginBottom="5dp"
                 />
             <TextView
-                android:id="@+id/student_dob"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DOB :- 02/0/2004"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif-black"
-                android:layout_marginBottom="5dp"
-                />
-            <TextView
                 android:id="@+id/student_hostel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hostel:- Sayera narsimha reddy"
+                android:text="Hostel code:- CC "
                 android:textSize="15sp"
                 android:fontFamily="sans-serif-black"
                 android:layout_marginBottom="5dp"
@@ -117,6 +108,15 @@
                     android:textColor="@color/btnprimary"
                     android:fontFamily="sans-serif-black"
                     />
+                <TextView
+                    android:id="@+id/query_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status :"
+                    android:textSize="20sp"
+                    android:textColor="@color/btnprimary"
+                    android:fontFamily="sans-serif-black"
+                    />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
@@ -134,7 +134,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@drawable/circularimg"
-            android:src="@drawable/logo1"
+            android:src="@drawable/ic_baseline_logout_24"
             android:layout_marginRight="50dp"
             />
         <ImageButton

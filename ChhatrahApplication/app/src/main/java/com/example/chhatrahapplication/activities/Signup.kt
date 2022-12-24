@@ -9,14 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.chhatrahapplication.R
 import com.example.chhatrahapplication.SharedPrefManager
 import com.example.chhatrahapplication.api.RestApiService
-import com.example.chhatrahapplication.api.RetrofitClient
 import com.example.chhatrahapplication.databinding.ActivitySignupBinding
 import com.example.chhatrahapplication.models.DefaultResponse
 import com.example.chhatrahapplication.models.User
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.Retrofit
-import javax.security.auth.callback.Callback
 
 
 class Signup : AppCompatActivity() {
@@ -82,17 +77,18 @@ class Signup : AppCompatActivity() {
                roll_no = rollno,
                password = password,
                name = name,
-               hostel_code = hostelName.get(hcode)
+               hostel_code = hostelName.get(hcode),
+               message = ""
            )
            apiService.addUser(student) {
-//               if () {
+               if (!it?.message.isNullOrEmpty()) {
                    Toast.makeText(applicationContext, "Sucsessfull signUp", Toast.LENGTH_LONG).show()
                    loginFunction(rollno,password)
-//
-//               } else {
+
+               } else {
                    Toast.makeText(applicationContext, "Invalid Details", Toast.LENGTH_LONG)
                        .show()
-//               }
+               }
 
 
            }

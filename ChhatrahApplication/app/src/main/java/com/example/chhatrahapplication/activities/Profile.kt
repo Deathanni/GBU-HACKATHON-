@@ -11,7 +11,9 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.example.chhatrahapplication.R
 import com.example.chhatrahapplication.SharedPrefManager
+import com.example.chhatrahapplication.api.RestApiService
 import com.example.chhatrahapplication.databinding.ActivityProfileBinding
+import com.example.chhatrahapplication.models.AddQuery
 
 
 class Profile : AppCompatActivity() {
@@ -35,20 +37,28 @@ class Profile : AppCompatActivity() {
         submit_query = findViewById(R.id.add_query)
         taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
 
-
+        val rollno = SharedPrefManager.getInstance(applicationContext).reqRoll
+            binding.studentRoll.text = String.format("Roll no :- %s ", rollno )
             submit_query.text = String.format("Add Query")
             binding.apply {
 
                 submit_query.setOnClickListener {
                     if (binding.queryTitle.text == "Title :" || binding.queryDes.text == "Description :"){
-                    AddingQuery().show(supportFragmentManager, "NewTaskTag")}
+                    AddingQuery().show(supportFragmentManager, "NewTaskTag")
+                    }
                 }
             }
-          taskViewModel.title.observe(this){
-              binding.queryTitle.text = String.format("Title : %s", it )
-          }
+        taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+        taskViewModel.title.observe(this){
+            binding.queryTitle.text = String.format("Title : %s", it )
+        }
         taskViewModel.des.observe(this){
+
             binding.queryDes.text = String.format("Description : %s", it )
+        }
+
+        taskViewModel.roll.observe(this){
+            binding.studentRoll.text = String.format("roll no : %s", it )
         }
         setting.setOnClickListener {
             val intent = Intent(this, QueriesResolved::class.java)
@@ -63,15 +73,34 @@ class Profile : AppCompatActivity() {
             startActivity(intent)
         }
         binding.logout.setOnClickListener{
-            SharedPrefManager.getInstance(this).clear()
+            SharedPrefManager.getInstance(applicationContext).clear()
             val intent = Intent(this, HomePage::class.java)
-            Toast.makeText(applicationContext,"Login Sucsessfull", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext,"Logout Initiated", Toast.LENGTH_LONG).show()
             startActivity(intent)
         }
 
     }
 
-//    fun addQueries(newQuery: Queries){
+    fun addQuery( rollno : String?, tkn : String?, cText: String, cDes: String, hcode:String){
+
+        val apiService = RestApiService()
+
+        val complaint = AddQuery(
+            roll_no = rollno,
+            token =tkn,
+            complaint_text = cText,
+            complaint_text_title = cDes,
+            hostel_code = hcode,
+            message = ""
+        )
+
+        apiService.addQueries(complaint) {
+           if(it?.message.isNullOrEmpty())
+               error("Failed adding a query")
+        }
+
+    }
+////    fun addQueries(newQuery: Queries){
 //
 //    }
 //

@@ -23,10 +23,8 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        SharedPrefManager.getInstance(applicationContext).clear()
         login_btn = findViewById(R.id.login_btn)
         signup_btn = findViewById(R.id.signup_btn)
-        SharedPrefManager.getInstance(this).clear()
         login_btn.setOnClickListener {
             val rollno = binding.editUsername.text.toString().trim()
             val password = binding.editPassword.text.toString().trim()

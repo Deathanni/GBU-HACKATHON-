@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif-black"
-                android:text="Name:- Xyz Delta"
+                android:text="Name:- stu 2 test"
                 android:textSize="15sp" />
 
             <TextView
@@ -47,17 +47,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif-black"
-                android:text="Roll no :- 2022468330"
+                android:text="Roll no :- "
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/student_dob"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="sans-serif-black"
-                android:text="DOB :- 02/0/2004"
-                android:textSize="15sp" />
+
 
             <TextView
                 android:id="@+id/student_hostel"
@@ -65,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif-black"
-                android:text="Hostel:- Sayera narsimha reddy"
+                android:text="Hostel code:- CC"
                 android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>

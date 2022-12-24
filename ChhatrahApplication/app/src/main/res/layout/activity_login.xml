@@ -29,6 +29,7 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/edt_background"
         android:textColorHint="@color/white"
+        android:textColor="@color/white"
         />
 
     <EditText
@@ -43,6 +44,7 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/edt_background"
         android:textColorHint="@color/white"
+        android:textColor="@color/white"
         />
 
     <Button

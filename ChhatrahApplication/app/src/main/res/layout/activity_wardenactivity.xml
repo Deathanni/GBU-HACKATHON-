@@ -22,7 +22,7 @@
             android:id="@+id/student_img"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/student"
+            android:src="@drawable/admin"
             android:layout_marginRight="40dp"
             />
 
@@ -35,7 +35,7 @@
                 android:id="@+id/student_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name:- Xyz Delta"
+                android:text="Name:- Admin 1"
                 android:textSize="15sp"
                 android:fontFamily="sans-serif-black"
                 android:layout_marginBottom="15dp"
@@ -44,7 +44,7 @@
                 android:id="@+id/student_hostel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hostel:- Sayera narsimha reddy"
+                android:text="Hostel code :- AA"
                 android:textSize="15sp"
                 android:fontFamily="sans-serif-black"
                 android:layout_marginBottom="5dp"
@@ -85,36 +85,28 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
-        >
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/setting"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:background="@drawable/circularimg"
-            android:src="@drawable/logo1"
             android:layout_marginRight="50dp"
-            />
+            android:background="@drawable/circularimg"
+            android:src="@drawable/logo1" />
+
         <ImageButton
             android:id="@+id/phome"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@drawable/circularimg"
-            android:src="@drawable/logo2"
-            android:layout_marginRight="50dp"
-            />
-        <ImageButton
-            android:id="@+id/info"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/circularimg"
-            android:src="@drawable/logo3"
-            android:padding="3dp"
-
-            />
+            android:src="@drawable/ic_baseline_logout_24" />
 
     </LinearLayout>
 </RelativeLayout>

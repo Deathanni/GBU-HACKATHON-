@@ -4,20 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import com.example.chhatrahapplication.R
 import com.example.chhatrahapplication.SharedPrefManager
 import com.example.chhatrahapplication.api.RestApiService
-import com.example.chhatrahapplication.api.RetrofitClient
-import com.example.chhatrahapplication.databinding.ActivityLoginBinding
 import com.example.chhatrahapplication.databinding.ActivityWardenLoginBinding
-import com.example.chhatrahapplication.models.LoginResponse
-import com.example.chhatrahapplication.models.User
 import com.example.chhatrahapplication.models.Warden
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class WardenLogin : AppCompatActivity() {
     private lateinit var login_btn : Button
@@ -52,14 +44,14 @@ class WardenLogin : AppCompatActivity() {
                 token = ""
             )
             apiService.loginAdmin(warden) {
-                if (it?.token != "") {
+                if (it?.token.isNullOrEmpty()) {
                     val tkn = it?.token.toString().trim()
                     Toast.makeText(applicationContext,tkn, Toast.LENGTH_LONG).show()
                     Toast.makeText(applicationContext, "Sucsessfull login", Toast.LENGTH_LONG).show()
 
                     SharedPrefManager.getInstance(applicationContext).saveUser(username,tkn,password)
 
-                    val intent = Intent(applicationContext, Profile::class.java)
+                    val intent = Intent(applicationContext, WardenActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

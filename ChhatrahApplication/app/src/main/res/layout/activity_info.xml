@@ -67,7 +67,7 @@
                 android:id="@+id/student_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name:- Xyz Delta"
+                android:text="Name:- stu 2 test"
                 android:textSize="30sp"
                 android:fontFamily="sans-serif-black"
                 android:layout_marginBottom="5dp"
@@ -81,20 +81,12 @@
                 android:fontFamily="sans-serif-black"
                 android:layout_marginBottom="5dp"
                 />
-            <TextView
-                android:id="@+id/student_dob"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DOB :- 02/0/2004"
-                android:textSize="30sp"
-                android:fontFamily="sans-serif-black"
-                android:layout_marginBottom="5dp"
-                />
+
             <TextView
                 android:id="@+id/student_hostel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hostel:- Sayera narsimha reddy"
+                android:text="Hostel:- CC"
                 android:textSize="30sp"
                 android:fontFamily="sans-serif-black"
                 android:layout_marginBottom="5dp"

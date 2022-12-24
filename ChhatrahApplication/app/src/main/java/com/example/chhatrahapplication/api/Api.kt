@@ -26,4 +26,16 @@ interface Api {
     fun adminLogIn(
         @Body adminData: Warden
     ):retrofit2.Call<Warden>
+
+    @Headers("Content-Type: application/json")
+    @POST("private/complaint")
+    fun addQuery(
+        @Body adminData: AddQuery
+    ):retrofit2.Call<AddQuery>
+
+    @Headers("Content-Type: application/json")
+    @POST("private/complaints")
+    fun seeQuery(
+        @Body adminData: QueriesOnList
+    ):retrofit2.Call<QueriesOnList>
 }
